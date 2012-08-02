@@ -1,0 +1,26 @@
+# coding: utf-8
+first:
+  id: 1
+  name: "线上"
+  app_id: 1
+second:
+  id: 2
+  name: "预发"
+  app_id: 1
+third:
+  id: 3
+  name: "线上"
+  app_id: 2
+forth:
+  id: 4
+  name: "预发"
+  app_id: 2
+five:
+  id: 5
+  name: "线上"
+  app_id: 3
+six:
+  id: 6
+  name: "预发"
+  app_id: 3
+

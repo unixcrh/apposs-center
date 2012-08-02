@@ -1,0 +1,16 @@
+  <span style="float:left;margin-right:4px">
+    <%=image_tag 'refresh.png', :onclick=>'return $(this).parent().parent().children().last().trigger("refresh.application");', :title => '手动刷新' %>
+  </span>
+  <span style="float:left" onclick="return $(this).parent().children().last().trigger('load_toggle.application')" title="单击查看相关机器">
+    <%=resource.name %>
+  </span>
+  <div style="display:inline;float:right">
+    <%=actions(resource) %>
+    <%=resource.human_state_name %>
+    <span style="padding:0 4px;color:grey">
+      <%=l resource.updated_at %>
+    </span>
+  </div>
+  <div style="clear:both"></div>
+  <div box-href="<%=operation_machines_path(resource.id) %>"></div>
+

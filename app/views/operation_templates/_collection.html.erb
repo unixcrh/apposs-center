@@ -1,0 +1,39 @@
+            <ul class="nav nav-list">
+              <li class="nav-header">
+              <div class="span">
+                操作面板
+                <%=link_to ' ', app_operation_templates_path(parent.id), 
+                  remote: true, class: 'icon-refresh', title: '刷新' %>
+                </span>
+                <% if current_user.is_pe? parent %>
+                  <%=link_to ' ', new_app_operation_template_path(parent.id), :remote => true, :class => 'pull-right icon-plus', :title => '新建操作' %>
+                <% end %>
+              </li>
+            </ul>
+            <table table-striped="" class="table">
+            	<thead>
+            		<tr>
+            			<th></th>
+            			<th></th>
+            		</tr>
+              </thead>
+              <tbody>
+              <% current_user.owned_operation_templates(parent).each do |template|%>
+              	<tr>
+                  <td title="<%=template.name %>"><%=template.name[0..18] %></td>
+                  <td>
+                    <%=link_to "执行", execute_app_operation_template_path(parent.id,template.id), :form_to => 'execute_form', :data => {:confirm => "系统将执行操作：#{template.name} ，请确认"}, :class => 'btn btn-mini btn-primary' %>
+                    <%=link_to "分组执行", group_form_app_operation_template_path(parent.id,template.id), :remote => true, :class => 'btn btn-mini' %>
+                  </td>
+                  <td>
+                    <% if current_user.is_pe? parent %>
+                      <%=link_to raw('<i class="icon-pencil"></i>'), edit_app_operation_template_path(parent.id,template.id), :remote => true %>
+                      <%=link_to raw('<i class="icon-trash"></i>'), app_operation_template_path(parent.id,template.id), :remote => true,:method => :delete, :data => { :confirm => "确实要删除吗？" } %>
+                    <% end %>
+                    <%=link_to raw('<i class="icon-eye-open"></i>'), app_operation_template_path(parent.id,template.id), :remote => true, :title => '显示操作内容' %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+

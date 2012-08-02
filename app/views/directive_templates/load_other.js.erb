@@ -1,0 +1,8 @@
+<% if @other_user %>
+$('#main_list fieldset').
+  html(
+    '<%= escape_javascript(render 'load_other', :collection => @directive_templates) %>'
+  ).slideDown(500);
+<% else %>
+  msg("用户不存在！");
+<% end %>

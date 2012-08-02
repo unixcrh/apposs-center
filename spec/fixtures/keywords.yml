@@ -1,0 +1,14 @@
+# coding: utf-8
+keyword1:
+  id: 1
+  type: Dangerous
+  value: mv
+keyword2:
+  id: 2
+  type: Dangerous
+  value: rm
+keyword3:
+  id: 3
+  type: Other
+  value: other
+

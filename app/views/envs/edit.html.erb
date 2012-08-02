@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apposs</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div style="margin:15px">
+    更新配置信息：<span style="color:green"><%=@env.app.name %></span>
+  </div>
+  <fieldset>
+  <legend>上传完整的配置文件</legend>
+    <%=form_for @env, :url => app_env_path(@env.app_id,@env), :html => { :multipart => true,:method => "put" } do |f| %>
+      <%=f.file_field :property_file %>
+      <%=f.submit '提交' %>
+    <% end %>
+  </fieldset>
+  <fieldset>
+    <legend>修改当前环境的配置内容</legend>
+    <%=form_for @env, :url => app_env_path(@env.app_id,@env), :html => { :method => "put" } do |f| %>
+      <%=f.text_area :property_content, :value => @env.property_content, :style => 'width:800px' %>
+      <br />
+      <%=f.submit '提交' %>
+    <% end %>
+  </fieldset>
+</body>
+</html>
+

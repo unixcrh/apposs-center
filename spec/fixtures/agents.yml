@@ -1,0 +1,5 @@
+normal:
+  id: 1
+  name: 'localhost'
+  ipaddr: '127.0.0.1'
+

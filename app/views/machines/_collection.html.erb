@@ -1,0 +1,46 @@
+<%
+  machines = current_user.owned_machines(app)
+  is_pe = current_user.is_pe?(app)
+%>
+            <input type="hidden" name="data" />
+            <ul class="nav nav-list">
+              <li class="nav-header">
+                <table style="width: 100%;"><tr>
+                    <td>
+                      服务器
+                      <%=link_to ' ', app_machines_path(app.id), 
+                        remote: true, class: 'icon-refresh', title: '刷新' %>
+                    </td>
+                    <td width="20px">
+                      <%=link_to ' ', reload_machines_app_path(app.id), remote: true, class: 'icon-download-alt', title: '从CMDB同步服务器信息' %>
+                    </td>
+                </tr></table>
+              </li>
+            </ul>
+            <div refer_to="machines">
+              <a href="javascript:void 0;" select="all">全选</a>
+              <a href="javascript:void 0;" select="none">清除</a>
+              <% if current_user.is_pe? app %>
+                |
+                <strong>
+                  <%=link_to "设定连接用户", change_user_app_machines_path(app), :title => '对指定机器设定ssh访问的帐号，改变后需要重连', :form_to => 'execute_form', :prompt => "请指定用于连接服务器的ssh用户" %>
+                </strong>
+              <% end %>
+            </div>
+            <div style="height:200px; overflow-y:auto; overflow-x: hidden"> 
+            <table class="table">
+              <thead>
+                <tr>
+                </tr>
+                </thead>
+                <tbody id="machines">
+                <% machines.each{|machine|%>
+                  <tr id="machines_<%=machine.id %>"> 
+                    <%=render '/machines/item', :machine => machine, :app => app %>
+                  </tr>
+              <% }%>
+              </tbody>
+            </table>
+          </div>
+           </ul>
+

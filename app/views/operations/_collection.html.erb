@@ -1,0 +1,28 @@
+<div id="operations">
+  <h4 style="text-align:center" class="well">
+    <% if defined? history %>
+      <%=link_to '操作列表', operations_app_path(parent.id), :remote => true, :style => 'color:grey' %> | <%=link_to '历史操作(最近一个月)', 
+      old_operations_app_path(parent.id), 
+      :remote => true,
+      :style => 'color:black' %>
+    <% else %>
+      <%=link_to '操作列表', 
+        operations_app_path(parent.id), 
+        :remote => true,
+        :style => 'color:black' %> | <%=link_to '历史操作(最近一个月)', old_operations_app_path(parent.id), :remote => true, :style => 'color:grey' %>
+    <% end %>
+  </h4>
+  <%
+   if defined? history 
+     collection = (collection||parent.operations.without_state(:done)).order('created_at desc')
+   else
+     collection = (collection||parent.operations.without_state(:done))
+   end
+  %>
+  <% collection.each do |operation|%>
+    <div class="well" style="background-color:#bbb" box-href="<%=operation_path(operation.id) %>">
+      <%=render 'operations/item', :resource => operation %>
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,9 @@
+admin:
+  id: 1
+  name: <%=Role::Admin %>
+pe:
+  id: 2
+  name: <%=Role::PE %>
+appops:
+  id: 3
+  name: <%=Role::APPOPS %>

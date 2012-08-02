@@ -1,0 +1,2 @@
+User.seed(:email){ |u| u.email = 'lifu@taobao.com' }
+User.find_by_email('lifu@taobao.com').grant Role::Admin

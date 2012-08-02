@@ -1,0 +1,1 @@
+$("#machines").html('<%= escape_javascript(render "/machines/collection", :app => App.find(params[:app_id])) %>');

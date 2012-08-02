@@ -1,0 +1,7 @@
+<ul class="nav nav-list" style="background-color:#fff">
+  <% @directives.each do |directive| %>
+  <li box-href="<%=directive_path(directive.id) %>">
+      <%= render 'directives/item', :resource => directive %>
+  </li>
+  <% end %>
+</ul>

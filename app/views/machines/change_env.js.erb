@@ -1,0 +1,2 @@
+info('分配机器环境：<%="#{@machine.name} - #{@machine.env.name}" %>');
+$("#machines_<%=@machine.id %>").html('<%= escape_javascript(render "/machines/item", :machine => @machine, :app => @machine.app) %>');

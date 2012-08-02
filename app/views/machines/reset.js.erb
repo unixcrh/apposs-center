@@ -1,0 +1,2 @@
+info('生成<%=@directive.command_name %>指令');
+$("#machines_<%=@machine.id %>").html('<%= escape_javascript(render "/machines/item", :machine => @machine, :app => @machine.app) %>');

@@ -1,0 +1,16 @@
+<%= form_for(resource,
+             :as => "#{resource_instance_name.to_s.downcase}",
+             :url => resource.new_record? ? collection_url : resource_url(resource),
+             :html => { 
+               :method => (resource.new_record? ? "post" : "put"),
+               :class => 'well form-inline'
+             },
+             :remote => true) do|f| %>
+    <p><strong><%=resource.new_record? ? "新增" : "修改"%>软件</strong></p>
+    <div class="errors" style="padding:4px"></div>
+    <%=f.hidden_field :app_id, :value => params[:app_id] %>
+    名称：<%=f.text_field :name %>    
+    <%=f.submit '提交' %>
+    <input type="reset" value="取消"
+    onclick="$('#softwares .form').fadeOut(100);" />
+<% end %>

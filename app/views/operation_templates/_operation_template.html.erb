@@ -1,0 +1,21 @@
+<div id="operation_template">
+  <h4 class="well" style="text-align:center">
+    <%=resource.name %> 操作详情
+  </h4>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th width="15%">指令名称</th>
+        <th>指令详情</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% resource.directive_templates do |directive_template, ignored| %>
+      <tr>
+        <td><%=directive_template.alias %></td>
+        <td><%=directive_template.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

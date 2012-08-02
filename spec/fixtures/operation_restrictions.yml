@@ -1,0 +1,6 @@
+operation_restriction1:
+  id: 1
+  operation_template_id: 1
+  env_id: 1
+  limit: 10
+  limit_cycle: 'W'

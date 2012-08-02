@@ -1,0 +1,18 @@
+      <span style="float:left;color:green;width:40px"><%=resource.id %></span>
+      <span style="float:left" title="<%=resource.command_name %>">
+        <%=resource.command_name[0..80] %>
+      </span>
+      <span style="color:#901252;float:right">
+        <%=resource.human_state_name %>
+        <% if resource.response %>
+        <%=link_to "\"#{resource.response[-6..-1]}\"", body_directive_path(resource), :remote => true %>
+        <% end %>
+      </span>
+      <span style="display:inline;float:right;padding:0 4px;color:grey">
+        <%=l resource.updated_at, :format => :short %>
+      </span>
+      <div style="display:inline;float:right">
+        <%=actions(resource) %>
+      </div>
+      <div style="clear:both" />
+

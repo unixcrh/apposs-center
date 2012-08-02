@@ -1,0 +1,9 @@
+group1:
+  id: 1
+  name: jboss
+group2:
+  id: 2
+  name: nodejs
+group3:
+  id: 3
+  name: default

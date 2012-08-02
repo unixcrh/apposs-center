@@ -1,0 +1,1 @@
+$("#zone").html('<%= escape_javascript(render '/directives/collection', :collection => @directives.asc, :parent_id => params[:id]) %>');

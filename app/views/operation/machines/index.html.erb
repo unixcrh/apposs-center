@@ -1,0 +1,18 @@
+<ul class="nav nav-list" style="background-color:#ddd">
+  <% @machines.each do |machine| %>
+  <li>
+    <span style="float:left;margin-right:4px">
+      <%=image_tag 'refresh.png', :onclick=>'return $(this).parent().parent().children().last().trigger("refresh.application");', :title => '手动刷新' %>
+    </span>
+    <span style="float:left" onclick="return $(this).parent().children().last().trigger('load_toggle.application')">
+      <%=machine.name %>
+    </span>
+    <span style="float:left;padding:0 6px">
+      <%=link_to('显示指令列表', directives_machine_path(machine.id), :remote => true ) %>
+    </span>
+    <span style="float:right"><%=machine.human_state_name%></span>
+    <div style="clear:both"></div>
+    <div box-href="<%=directives_operation_machine_path(params[:operation_id],machine.id) %>"></div>
+  </li>
+  <% end %>
+</ul>

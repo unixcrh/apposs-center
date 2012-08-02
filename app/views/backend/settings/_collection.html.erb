@@ -1,0 +1,19 @@
+<div id="main_list">
+  <h4 class="lead well">
+    <%=Settings.model_name.human %>列表
+  </h4>
+  <ul class="nav nav-list">
+  <% collection.each do |item| %>
+    <li>
+      <%= form_for(
+                    :settings,
+                    :url => backend_setting_path(item[0]),
+                    :html => { :method => "put" }
+                  ) do|f| %>
+        <%="%20s" % item %>: <%=f.text_field :value, :value => item[1] %>
+        <%=f.submit '更新' %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>

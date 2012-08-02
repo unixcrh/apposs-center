@@ -1,0 +1,24 @@
+<div id="ops">
+  <h4 class="well" style="text-align:center">
+    操作员列表 <%=link_to "单击创建", new_app_op_path(parent_id), :remote => true %>
+  </h4>
+  <div class="form"></div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th with="10%">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% collection.each do |user| %>
+      <tr>
+        <td><%=user.email %></td>
+        <td>
+          <%=link_to "删除", app_op_path(parent_id,user.id), :remote => true, :method => :delete, :confirm => "确实要删除吗？" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

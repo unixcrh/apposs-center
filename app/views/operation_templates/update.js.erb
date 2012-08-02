@@ -1,0 +1,10 @@
+<% if resource.errors.count > 0 %>
+  $("#zone").
+    find("div.errors").
+    html('<ul class="errors"><%=raw resource.errors.to_a.collect{|msg| content_tag :li, msg}.join %></ul>');
+<% else %>
+  $("#zone").empty();
+  info("修改成功！");
+  $("#operation_templates").html('<%=escape_javascript(render "/operation_templates/collection", :parent => resource.app ) %>');
+<% end %>
+

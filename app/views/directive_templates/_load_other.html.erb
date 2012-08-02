@@ -1,0 +1,25 @@
+<%= form_for :simple_form, 
+    :as => :put, :remote => true,
+    :url => add_all_directive_templates_path do |f| %>
+  <h4 class="well">导入 <%=params[:email] %> 的指令</h4>
+  <div class="errors" style="margin:8px"></div>
+  <ul class="nav nav-list">
+    <li><label>
+      <a href="javascript:void 0;" select="all">全选</a>
+      <a href="javascript:void 0;" select="none">清除</a>
+    </label>
+    </li>
+    <% collection.each do |resource| %>
+      <li><div>
+        <input type="checkbox" name="imported_ids[]" value="<%=resource.id %>">
+        <strong><%=resource.alias %></strong>
+        <span style="padding:0 4px;color:green" title="<%=resource.name %>">
+          <%=resource.name[0..70] %>
+        </span>
+      </div></li>
+      <% end %>
+    </ul>
+    <%=f.submit "导入选中的条目" %>
+    <input type="reset" value="取消"
+    onclick="$('#main_list fieldset').fadeOut(100);" />
+  <% end %>

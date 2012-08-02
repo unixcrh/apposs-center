@@ -1,0 +1,16 @@
+normal:
+  id: 1
+  name: sample-app
+  state: running
+  virtual: 0
+other:
+  id: 2
+  name: another-app
+  state: running
+  virtual: 0
+lock:
+  id: 3
+  name: lock-app
+  state: running
+  locked: true
+  virtual: 0

@@ -1,0 +1,8 @@
+<table class="<%= resource_class.to_s.downcase %> detail">
+<% [:email, :updated_at, :last_sign_in_at].each{|attr_sym| %>
+  <tr>
+    <th align="right"><%= resource_class.human_attribute_name attr_sym %></th>
+    <td><%= resource.send attr_sym %></td>
+  </tr>
+<% } %>
+</table>

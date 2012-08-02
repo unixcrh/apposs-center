@@ -1,0 +1,2 @@
+$("#operation_templates").html('<%= escape_javascript(render "/operation_templates/collection", :parent => App.find(params[:app_id])) %>');
+

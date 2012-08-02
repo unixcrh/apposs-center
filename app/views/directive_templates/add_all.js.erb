@@ -1,0 +1,9 @@
+<% if @errors.count > 0 %>
+    msg('<ul class="nav nav-list">导入...下列指令导入失败: <%=raw @errors.collect{|msg| content_tag :li, h(msg)}.join %></ul>');
+<% else %>
+  $("#zone").html('<%= escape_javascript(
+    render 'collection', :collection => @directive_templates
+  ) %>');
+  info("导入完毕!");
+<% end %>
+

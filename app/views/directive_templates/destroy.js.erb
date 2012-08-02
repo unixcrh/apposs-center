@@ -1,0 +1,4 @@
+info("已删除！");
+$("#zone").html('<%= escape_javascript(
+  render 'collection', :collection => current_user.directive_templates
+) %>');

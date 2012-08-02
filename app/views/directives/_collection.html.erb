@@ -1,0 +1,21 @@
+<div id="directives">
+  <h4 style="text-align:center" class="well">
+  <% if defined? history %>
+    <%=link_to '指令列表', directives_machine_path(parent_id), :remote => true%>|<%=link_to '历史指令(最近一个月)', 
+      old_directives_machine_path(parent_id),
+      :remote => true,
+      :style => 'color:red'  %>
+  <% else %>
+    <%=link_to '指令列表', 
+      directives_machine_path(parent_id), 
+      :remote => true, 
+      :style => 'color:red'  %>|<%=link_to '历史指令(最近一个月)', old_directives_machine_path(parent_id), :remote => true %>
+  <% end %>[ <%=Machine.find(parent_id).name %>  ]
+  </h4>
+  <% collection.each do |directive|%>
+    <div class="well" box-href="<%=directive_path(directive.id) %>">
+      <%= render 'directives/item', :resource => directive %>
+    </div>
+  <% end %>
+</div>
+

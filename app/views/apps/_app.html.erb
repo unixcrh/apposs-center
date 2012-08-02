@@ -1,0 +1,40 @@
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <% if current_user.is_pe? current_app %>
+              <ul class="nav nav-list">
+                <li class="nav-header">应用设置</li>
+                <!--li><%=link_to '管理软件包', app_softwares_path(app), :remote => true %></li-->
+                <li><%=link_to '管理操作权限', app_permissions_path(app_id: app.id), :remote => true %></li>
+                <li><%=link_to '设定操作员', app_ops_path(app_id: app.id), :remote => true %></li>
+                <li><%=link_to '文件同步设置', apposs_file.file_entries_path(app_id: app.id), :remote => true %></li>
+              </ul>
+            <% end %>
+            <ul class="nav nav-list">
+              <li class="nav-header">更新配置参数</li>
+              <% app.envs.each do |env| %>
+                <%=link_to env.name, edit_app_env_path(app,env), :target => 'blank' %>
+              <% end %>
+            </ul>
+          </div>
+          <%= form_for( :operation_templates,
+                       :url => '#',
+                       :remote => true,
+                       :html => { :name => 'execute_form', :method => "post" }
+                      ) do |f| %>
+            <div id="machines" class="well sidebar-nav">
+              <%=render "/machines/collection", :app => app %>
+            </div>
+            <div id="operation_templates" class="well sidebar-nav">
+              <%=render "/operation_templates/collection", :parent => app %>
+            </div>
+          <% end%>
+        </div><!--/.well -->
+        <div id="zone" class="span9">
+          <%=render "/operations/collection", :parent => app %>
+        </div> 
+      </div><!--/span-->
+      <script type="text/javascript">
+        $("#app_nav li").removeClass("active");
+        $("#app_nav_<%=app.id %>").addClass("active");
+      </script>

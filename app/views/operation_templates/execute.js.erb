@@ -1,0 +1,10 @@
+<% if @choosed_machine_ids.size == 0 %>
+  info("请选择执行操作的机器");
+<% elsif @error %>
+  msg("创建失败: <span style='color:red'><%=@error %></span>");
+<% elsif @operation %>
+  info("操作已创建");
+  $("#zone").html('<%=escape_javascript(render "/operations/collection", :parent => App.find(params[:app_id])) %>');
+<% else %>
+  alert("系统错误，创建失败");
+<% end %>

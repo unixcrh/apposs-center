@@ -1,0 +1,18 @@
+  <%= form_for(resource,
+      :as => "#{resource_instance_name.to_s.downcase}",
+      :url => resource.new_record? ? collection_url : resource_url(resource),
+      :html => { 
+        :method => (resource.new_record? ? "post" : "put"),
+        :class => 'form-inline'
+      },
+      :remote => true) do|f| %>
+        <div class="errors" style="padding:8px"></div>
+        用户帐号（注册邮箱）
+        <%=f.text_field :email %>
+        用户角色
+        <%=f.select :role_name, %w{PE AppOPS} %>
+          <%=f.submit '提交' %>
+          <input type="reset" value="取消"
+            onclick="$('#main_list fieldset').fadeOut(100);" />
+  <% end %>
+

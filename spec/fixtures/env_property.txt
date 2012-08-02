@@ -1,0 +1,7 @@
+[config]
+ url=www.mysite.com
+  status=/home/mysite/status.html
+package=site_pkg
+  package_addr=http://www.mysite.com/taobao/site_pkg-1.0.noarch.rpm
+newpackage=site_pkg.rpm
+

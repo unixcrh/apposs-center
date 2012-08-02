@@ -1,0 +1,35 @@
+<div id="main_list">
+  <fieldset style="display:none"></fieldset>
+  <h4 class="lead" style="text-align:center">我的指令列表  </h4>
+  <%= form_for :simple_form, 
+    :as => :get, :remote => true,
+    :url => load_other_directive_templates_path,
+    :html => {:style => 'display:inline', :class => 'form-inline'} do |f| %>
+      <%=autocomplete_field_tag :email, '', search_autocomplete_user_email_path, placeholder: '你想导入谁的指令，请输入email' %>
+      <%=f.submit '导入' %>
+      <%=link_to " ", new_resource_path, :remote => true, :class => 'icon-plus', :title => '新建指令' %>
+    <% end %>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th width="35px">编号</th>
+        <th>名称</th>
+        <th>脚本</th>
+        <th width="60px">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% collection.each do |resource| %>
+        <tr>
+          <td><%=resource.id %></td>
+          <td><%=resource.alias %></td>
+          <td title="<%=resource.name %>"><%=resource.name[0..70] %></td>
+          <td>
+            <%=link_to "修改", edit_resource_path(resource), :remote => true %>
+            <%=link_to "删除", resource_path(resource), :remote => true, :method => :delete, :data => { :confirm => "确实要删除吗？"} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

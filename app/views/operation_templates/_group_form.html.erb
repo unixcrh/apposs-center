@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>分组执行操作</legend>
+  <%= form_for( :group,
+      :url => group_execute_app_operation_template_path(params[:app_id],params[:id]),
+      :html => { :method => "post" },
+      :remote => true) do|f| %>
+    <div class="errors" style="padding:8px"></div>
+    <table border="0">
+    <tr>
+      <td>机房</td>
+      <td><%=f.select :room_id, Room.all.collect{|room| [room.name, room.id]} %></td>
+    </tr>
+    <tr>
+      <td>分组数</td>
+      <td><%=f.number_field :group_count, :size => 5, :value => 1 %></td>
+    </tr>
+    <tr>
+      <td>每分组运行后暂停</td>
+      <td><%=f.check_box :is_hold, :checked => true %></td>
+    </tr>
+    </table>
+    <%=f.submit '提交', :confirm => "系统将分组执行操作：#{resource.name}，请确认" %>
+    <input type="reset" value="取消"
+      onclick="$('#zone').html('');" />
+  <% end %>
+</fieldset>

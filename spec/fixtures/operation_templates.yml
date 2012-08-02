@@ -1,0 +1,15 @@
+operation_template1:
+  id: 1
+  app_id: 1
+  name: "upgrade package"
+  expression: "1,2|true,4"
+operation_template2:
+  id: 2
+  app_id: 1
+  name: "downgrade package"
+  expression: "1,2"
+operation_template3:
+  id: 3
+  app_id: 1
+  name: "do before script"
+  expression: "1,2"

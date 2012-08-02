@@ -1,0 +1,40 @@
+machine1:
+  id: 1
+  app_id: 1
+  room_id: 1
+  name: "tanx1.cnz"
+  port: 22
+  env_id: 1
+  host: localhost
+  state: normal
+  adapter: ssh
+machine2:
+  id: 2
+  app_id: 1
+  room_id: 1
+  name: "tanx2.cnz"
+  port: 22
+  env_id: 1
+  host: tanx2
+  state: normal
+  adapter: ssh
+machine3:
+  id: 3
+  app_id: 1
+  room_id: 2
+  name: "tanx3.cnz"
+  port: 22
+  env_id: 2
+  host: tanx3
+  state: normal
+  adapter: ssh
+machine4:
+  id: 4
+  app_id: 1
+  room_id: 2
+  name: "tanx4.cnz"
+  port: 22
+  env_id: 2
+  host: tanx4
+  state: normal
+  adapter: ssh

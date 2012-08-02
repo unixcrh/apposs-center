@@ -1,0 +1,6 @@
+<% if @errmsg %>
+  alert('<%=@errmsg%>');
+<% else %>
+  info('操作分组已创建，共<%=@operations.count %>个分组');
+  $("#zone").html('<%=escape_javascript(render "/operations/collection", :parent => App.find(params[:app_id])) %>');
+<% end %>

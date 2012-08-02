@@ -1,0 +1,9 @@
+<% if resource.errors.count > 0 %>
+  $("#app_<%=resource.resource.id %> .form").
+    find("div.errors").
+    html('<ul class="errors"><%=raw resource.errors.to_a.collect{|msg| content_tag :li, msg}.join %></ul>');
+<% else %>
+  $('#app_<%=resource.resource.id %> .form').
+    html('<%= escape_javascript(render 'collection', :collection => resource.resource.acls) %>').
+    slideDown(500);
+<% end %>

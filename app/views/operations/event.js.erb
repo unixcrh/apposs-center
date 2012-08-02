@@ -1,0 +1,5 @@
+<% if @result %>
+info('已变更');
+<% else %>
+alert('变更失败，当前对象状态为：<%=resource.human_state_name %>')
+<% end %>

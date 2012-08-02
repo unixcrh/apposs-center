@@ -1,0 +1,60 @@
+<%= form_for(resource,
+      :as => "#{resource_instance_name.to_s.downcase}",
+      :url => resource.new_record? ? collection_url : resource_url(resource),
+      :html => { 
+        :method => (resource.new_record? ? "post" : "put") ,
+        :class => "form-horizontal"
+      },
+        :remote => true) do|f| %>
+  <%=f.hidden_field :app_id, :value => params[:app_id] %>
+  <fieldset>
+    <legend>
+      <%=resource.new_record? ? "新增" : "修改"%>操作模板
+    </legend>
+    <div class="errors"></div>
+    <dl class="dl-horizontal">
+      <dt><%=resource_class.human_attribute_name :name %></dt>
+      <dd><%=f.text_field(:name) %></dd>
+      <dt><%=resource_class.human_attribute_name :limit %></dt>
+      <dd>
+          <% current_app.envs.each do |env_obj| %>
+            <input name="operation_template[restriction_obj][<%=env_obj.name %>]" type="number" value="<%=resource.restrictions[env_obj].limit if resource.restrictions[env_obj]%>">
+            <strong><%=env_obj.name %></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <% end %>
+      </dd>
+      <dt>原子指令</dt>
+      <dd>
+      <div id="directives" class="row" style="margin:4px 0">
+        <div class="span4">
+          <div class="well" title="点击条目可以添加">全部指令</div>
+          <% DirectiveGroup.where(:name => [:default, :my_group]).each do |d_group| %>
+            <ul class="nav nav-list">
+              <li class="nav-header"><%=d_group.name %></li>
+              <% d_group.directive_templates_for_user(current_user).each do |d_template| %>
+                <li class="source">
+                <a key="<%=d_template.id %>"><%= d_template.alias %></a>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        <div class="span4">
+          <div class="well" title="上下拖动可以排序，点击减号去除">已选择的指令</div>
+          <ul class="nav nav-list target">
+            <% resource.directive_templates do |d_template,checked| %>
+              <li class="well">
+              <%=draggable_item d_template,checked %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      </dd>
+      <dt><%=f.submit '提交' %></dt>
+      <dd>&nbsp;</dd>
+    </dl>
+  </fieldset>
+<% end %>
+<script type="text/javascript">
+multi_selector( '#directives' );
+</script>

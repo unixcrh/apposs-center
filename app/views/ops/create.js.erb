@@ -1,0 +1,8 @@
+<% if @error %>
+  msg('<ul class="errors"><%=@error %></ul>');
+<% else %>
+  info("保存成功！");
+  $("#zone").html('<%= escape_javascript(
+  render 'collection', :collection => current_app.ops, :parent_id => current_app.id
+) %>');
+<% end %>

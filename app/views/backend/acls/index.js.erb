@@ -1,0 +1,3 @@
+$('#app_<%=params[:app_id] %> .form').
+  html('<%= escape_javascript(render 'collection', :collection => collection) %>').
+  slideDown(500);

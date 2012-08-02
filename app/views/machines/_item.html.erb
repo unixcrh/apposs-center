@@ -1,0 +1,42 @@
+                    <td width="132px">
+                      <label class="inline" title="<%="#{machine.name} [#{machine.host} #{machine.user}]" %>">
+                        <input type="checkbox" name="machine_ids[]" value="<%=machine.id %>" />
+                        <span style="color:<%=machine.normal? ? :green : :red %>">
+                          <%=machine.name[0..16] %>
+                        </span>
+                      </label>
+                    </td>
+                    <td>
+                      <% if current_user.is_pe?(app) %>
+                      <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                          <%=machine.env %>
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <% app.envs.each do |env| %>
+                            <li><%=link_to(
+                              env.name,
+                              change_env_machine_path(machine.id,:env_id => env.id), 
+                              :remote => true,
+                              :method => :put
+                            )%></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <% end %>
+                    </td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="icon-list"></i> 指令
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <% machine_actions(machine).each do |link| %>
+                            <li><%=link %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </td>
+

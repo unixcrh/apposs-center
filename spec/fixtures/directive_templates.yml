@@ -1,0 +1,66 @@
+directive_template1:
+  id: 1
+  directive_group_id: 1
+  alias: "start"
+  name: "echo start"
+  owner_id: 1
+directive_template2:
+  id: 2
+  directive_group_id: 1
+  alias: "stop"
+  name: "echo stop"
+  owner_id: 1
+directive_template3:
+  id: 3
+  directive_group_id: 1
+  alias: "redeploy"
+  name: "echo redeploy"
+  owner_id: 2
+directive_template4:
+  id: 4
+  directive_group_id: 2
+  alias: "start_nodejs"
+  name: "echo start_nodejs"
+  owner_id: 2
+directive_template5:
+  id: 5
+  directive_group_id: 2
+  alias: "stop_nodejs"
+  name: "echo stop_nodejs"
+  owner_id: 2
+directive_template6:
+  id: 6
+  directive_group_id: 3
+  name: 'mkdir -p `dirname $profile_path` && wget "$site_url/store/$app_id/$env_id/pe.conf" -O "$profile_path"'
+  alias: 'sync_profile'
+directive_template7:
+  id: 7
+  directive_group_id: 3
+  name: 'machine|reset'
+  alias: 'machine|reset'
+directive_template8:
+  id: 8
+  directive_group_id: 3
+  name: 'do inner'
+  alias: 'inner'
+directive_template9:
+  id: 9
+  directive_group_id: 3
+  name: 'machine|reconnect'
+  alias: 'machine|reconnect'
+directive_template10:
+  id: 10
+  directive_group_id: 3
+  name: 'machine|clean_all'
+  alias: 'machine|clean_all'
+directive_template11:
+  id: 11
+  directive_group_id: 3
+  name: 'machine|pause'
+  alias: 'machine|pause'
+directive_template12:
+  id: 12
+  directive_group_id: 3
+  name: 'machine|interrupt'
+  alias: 'machine|interrupt'
+

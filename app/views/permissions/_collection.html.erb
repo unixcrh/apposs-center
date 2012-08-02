@@ -1,0 +1,45 @@
+<div id="permissions">
+  <h4 class="well" style="text-align:center">
+    操作授权列表 <%=link_to "单击创建", new_app_permission_path(current_app.id), :remote => true %>
+  </h4>
+  <div class="form"></div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>操作列表</th>
+        <th>授权机器列表</th>
+        <th with="10%">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% collection.each do |permission| %>
+      <tr>
+        <td><%=permission.name %></td>
+        <td>
+          <ul class="unstyled">
+            <% current_app.operation_templates.where(
+              id: permission.operation_template_str.split(',').map(&:to_i)
+            ).each do |x| %>
+              <li><%=x.name %></li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <ul class="unstyled">
+            <% current_app.machines.where(
+              id: permission.machine_str.split(',').map(&:to_i)
+            ).each do |x| %>
+              <li><%=x.name %></li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <%=link_to "修改", edit_app_permission_path(current_app.id,permission.id), :remote => true %>
+          <%=link_to "删除", app_permission_path(current_app.id,permission.id), :remote => true, :method => :delete, :confirm => "确实要删除吗？" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

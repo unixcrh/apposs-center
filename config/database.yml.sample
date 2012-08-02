@@ -1,0 +1,27 @@
+# SQLite version 3.x
+#   gem install sqlite3
+defaults: &defaults
+  adapter: mysql2
+  host: localhost
+  username: apposs
+  password: apposs
+  encoding: utf8
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *defaults
+  database: apposs_development
+
+test: &test
+  <<: *defaults
+  database: apposs_test
+
+production:
+  <<: *defaults
+  database: apposs_development
+
+
+cucumber:
+  <<: *defaults
+  database: apposs_cucumber
+

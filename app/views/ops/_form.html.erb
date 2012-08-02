@@ -1,0 +1,14 @@
+<%= form_for(resource,
+    :as => "#{resource_instance_name.to_s.downcase}",
+    :url => app_ops_path(params[:app_id]),
+    :html => { 
+      :method => "post",
+      :class => 'form-inline'
+    },
+    :remote => true) do|f| %>
+      <div class="errors"></div>
+      用户帐号（注册邮箱）
+      <%=f.autocomplete_field :email, search_autocomplete_user_email_path %>
+      <%=f.submit '提交' %>
+      <input type="reset" value="取消" onclick="$('#ops .form').fadeOut(100);" />
+<% end %>

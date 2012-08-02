@@ -1,0 +1,3 @@
+# encoding:utf-8
+App.seed(:name){ |app| app.name = '淘宝网' }
+

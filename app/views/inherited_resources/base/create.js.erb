@@ -1,0 +1,8 @@
+<% if resource.errors.count > 0 %>
+    msg('<ul class="errors"><%=raw resource.errors.to_a.collect{|msg| content_tag :li, msg}.join %></ul>');
+<% else %>
+  info("保存成功！");
+  $("#zone").html('<%= escape_javascript(
+  render 'collection', :collection => collection
+  ) %>');
+<% end %>

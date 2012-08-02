@@ -1,0 +1,13 @@
+first:
+  id: 1
+  app_id: 1
+  name: 'first'
+  machine_str: '1,2'
+  operation_template_str: '2'
+
+second:
+  id: 2
+  app_id: 1
+  name: 'second'
+  machine_str: '3'
+  operation_template_str: '1'

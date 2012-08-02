@@ -1,0 +1,4 @@
+info("已删除！");
+$("#zone").html('<%= escape_javascript(
+  render 'collection', :collection => current_app.ops, :parent_id => current_app.id
+) %>');
